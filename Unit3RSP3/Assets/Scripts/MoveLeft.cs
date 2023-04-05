@@ -19,12 +19,19 @@ public class MoveLeft : MonoBehaviour
     {
         if (playerControllerScript.gameOver == false)
         {
-            transform.Translate(Vector3.left * Time.deltaTime * speed);
-        }
+            if (playerControllerScript.doubleSpeed)
+            {
+                transform.Translate(Vector3.left * Time.deltaTime * (speed * 2));
+            }
+            else
+            {
+                transform.Translate(Vector3.left * Time.deltaTime * speed);
+            }
 
-        if (transform.position.x < -10 && gameObject.CompareTag("Obstacle"))
-        {
-            Destroy(gameObject);
+            if (transform.position.x < -10 && gameObject.CompareTag("Obstacle"))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
